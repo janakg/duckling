@@ -333,8 +333,8 @@ library
                     --  , Duckling.Duration.DE.Rules
                     --  , Duckling.Duration.EL.Corpus
                     --  , Duckling.Duration.EL.Rules
-                    --  , Duckling.Duration.EN.Corpus
-                    --  , Duckling.Duration.EN.Rules
+                     , Duckling.Duration.EN.Corpus
+                     , Duckling.Duration.EN.Rules
                     --  , Duckling.Duration.FR.Corpus
                     --  , Duckling.Duration.FR.Rules
                     --  , Duckling.Duration.GA.Corpus
@@ -371,9 +371,9 @@ library
                     --  , Duckling.Duration.UK.Corpus
                     --  , Duckling.Duration.UK.Rules
                     --  , Duckling.Duration.ZH.Corpus
-                    --  , Duckling.Duration.Helpers
-                    --  , Duckling.Duration.Rules
-                    --  , Duckling.Duration.Types
+                     , Duckling.Duration.Helpers
+                     , Duckling.Duration.Rules
+                     , Duckling.Duration.Types
 
                     --  -- Email
                     --  , Duckling.Email.DE.Corpus
