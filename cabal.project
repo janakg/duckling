@@ -1,0 +1,7 @@
+packages:  ./text-show/*.cabal ./*.cabal 
+verbose: 3
+
+flags: +integer_simple -integer_gmp
+
+package text-show
+    flags: +integer-simple
