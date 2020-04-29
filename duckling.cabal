@@ -867,7 +867,7 @@ library
 executable duckling-hs-testing
   main-is:             testDuckling.hs
   hs-source-dirs:      exe
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  ghc-options:         -rtsopts -with-rtsopts=-N
   other-modules:       Duckling.Data.TimeZone
   build-depends:       duckling
                      , base
@@ -888,7 +888,7 @@ executable duckling-hs-testing
 executable duckling-parse-test
   main-is:             ParseText.hs
   hs-source-dirs:      exe
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  ghc-options:         -rtsopts -with-rtsopts=-N
   other-modules:       Duckling.Data.TimeZone
   build-depends:       duckling
                      , base

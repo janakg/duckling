@@ -34,34 +34,49 @@ import Data.Time.Clock.POSIX (posixSecondsToUTCTime)
 import Duckling.Core
 import Duckling.Data.TimeZone
 import Duckling.Resolve (DucklingTime)
+import qualified Data.Time as Time
+import Data.Fixed (Pico)
 import Duckling.Testing.Types
 
 main ::  IO ()
 main = do
     -- tzs <- loadTimeZoneSeries "/usr/share/zoneinfo/"
-    print $ parseHandler "call me at 9965377265"
-    -- print "done"
+    let parsedResult =  parseHandler "today at 9am"
+    print parsedResult
+
+-- type Datetime = (Integer, Int, Int, Int, Int, Pico)
+
+-- dt :: Datetime -> Time.UTCTime
+-- dt (year, month, days, hours, minutes, seconds) = Time.UTCTime day diffTime
+--   where
+--     day = Time.fromGregorian year month days
+--     diffTime = Time.timeOfDayToTime $ Time.TimeOfDay hours minutes seconds
+
+-- zTime :: Datetime -> Int -> Time.ZonedTime
+-- zTime datetime offset = fromUTC (dt datetime) $ Time.hoursToTimeZone offset
 
 -- refTime :: Datetime -> Int -> DucklingTime
 -- refTime datetime offset = fromZonedTime $ zTime datetime offset
 
 -- -- | Parse some text into the given dimensions
 -- parseHandler :: ByteString -> IO ()
-parseHandler :: Text -> [Entity]
+-- -> HashMap Text TimeZoneSeries
+
+parseHandler :: Text -> LBS.ByteString
 parseHandler givenText = do
-    -- let loc = makeLocale (parseLang "en")
-    -- let context = Context { locale = loc }
-    -- let options = Options {}
-    -- let dims = []
+    -- now <- liftIO $ currentReftime tzs (parseTimeZone "")
     let cont = Context
                 { locale = makeLocale EN Nothing
-                , referenceTime = refTime (2013, 2, 12, 4, 30, 0) (-2)
+                , referenceTime = refTime (2020, 4, 28, 4, 30, 0) (-2)
+                    -- 
                 }
     let opt = Options
                 { withLatent = False
                 }
     let dims = []
-    parse givenText cont opt dims
+    let parsedResult = parse givenText cont opt dims
+    encode parsedResult
+
 
 -- | Parse some text into the given dimensions
 -- parseHandler :: ByteString -> HashMap Text TimeZoneSeries -> IO ()
