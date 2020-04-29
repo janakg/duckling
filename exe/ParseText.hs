@@ -39,15 +39,15 @@ import Duckling.Testing.Types
 main ::  IO ()
 main = do
     -- tzs <- loadTimeZoneSeries "/usr/share/zoneinfo/"
-    parseHandler "call me at 9965377265"
-    print "done"
+    print $ parseHandler "call me at 9965377265"
+    -- print "done"
 
 -- refTime :: Datetime -> Int -> DucklingTime
 -- refTime datetime offset = fromZonedTime $ zTime datetime offset
 
 -- -- | Parse some text into the given dimensions
 -- parseHandler :: ByteString -> IO ()
-parseHandler :: Text -> IO ()
+parseHandler :: Text -> [Entity]
 parseHandler givenText = do
     -- let loc = makeLocale (parseLang "en")
     -- let context = Context { locale = loc }
@@ -61,8 +61,7 @@ parseHandler givenText = do
                 { withLatent = False
                 }
     let dims = []
-    let entities = parse givenText cont opt dims
-    print entities
+    parse givenText cont opt dims
 
 -- | Parse some text into the given dimensions
 -- parseHandler :: ByteString -> HashMap Text TimeZoneSeries -> IO ()
