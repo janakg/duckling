@@ -37,6 +37,7 @@ import Duckling.Resolve (DucklingTime)
 import qualified Data.Time as Time
 import Data.Fixed (Pico)
 import Duckling.Testing.Types
+-- foreign export javascript "parseText" parseHandler :: [Char] -> [Char]
 
 main ::  IO ()
 main = do
