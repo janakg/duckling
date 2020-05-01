@@ -28,7 +28,8 @@ import qualified Data.ByteString.Lazy as LBS
 import qualified Data.HashMap.Strict as HashMap
 import qualified Data.Text as Text
 import qualified Data.Text.Encoding as Text
-
+import Asterius.Types
+import Asterius.Text
 import Data.Time.Clock.POSIX (posixSecondsToUTCTime)
 
 import Duckling.Core
@@ -37,7 +38,7 @@ import Duckling.Resolve (DucklingTime)
 import qualified Data.Time as Time
 import Data.Fixed (Pico)
 import Duckling.Testing.Types
--- foreign export javascript "parseText" parseHandler :: [Char] -> [Char]
+foreign export javascript "parseText" parseHandler :: JSString -> JSString
 
 main ::  IO ()
 main = do
@@ -63,7 +64,7 @@ main = do
 -- parseHandler :: ByteString -> IO ()
 -- -> HashMap Text TimeZoneSeries
 
-parseHandler :: Text -> LBS.ByteString
+parseHandler :: JSString -> JSString
 parseHandler givenText = do
     -- now <- liftIO $ currentReftime tzs (parseTimeZone "")
     let cont = Context
@@ -75,8 +76,9 @@ parseHandler givenText = do
                 { withLatent = False
                 }
     let dims = []
-    let parsedResult = parse givenText cont opt dims
-    encode parsedResult
+    let inText = textFromJSString givenText
+    let parsedResult = parse inText cont opt dims
+    textToJSString $Text.decodeUtf8 $ LBS.toStrict  $ encode parsedResult
 
 
 -- | Parse some text into the given dimensions

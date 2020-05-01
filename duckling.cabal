@@ -905,6 +905,7 @@ executable duckling-parse-test
                      , timezone-olson        >= 0.1.7 && < 0.2
                      , timezone-series
                      , unordered-containers
+                     , asterius-prelude
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings
 
