@@ -45,7 +45,7 @@ main = do
     print parsedResult
 
 
-parseHandler :: Text -> Text
+parseHandler :: Text -> LBS.ByteString
 parseHandler givenText = do
     -- now <- liftIO $ currentReftime tzs (parseTimeZone "")
     let cont = Context
